@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  @apply font-sans text-gray-900 bg-gray-50;
+
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold mb-4;
+  }
+  h2 {
+    @apply text-2xl font-semibold mb-3;
+  }
+  p {
+    @apply text-base mb-2;
+  }
+  a {
+    @apply text-blue-600 hover:text-blue-800;
+  }
+  ul {
+    @apply list-disc pl-5 mb-4;
+  }
+  li {
+    @apply mb-1;
+  }
+  button {
+    @apply bg-emerald-600 text-white font-semibold py-2 px-4 rounded hover:bg-emerald-700 cursor-pointer transition-colors duration-200;
+  }
+  input, textarea, select {
+    @apply border border-emerald-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none rounded py-2 px-3 mb-4 w-full;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white shadow-md rounded-lg p-6 mb-4;
+  }
+  .container {
+    @apply max-w-4xl mx-auto px-4;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .container {
+    @apply max-w-4xl mx-auto px-4;
+  }
+  .flex {
+    @apply flex;
+  }
+  .flex-col {
+    @apply flex-col;
+  }
+  .flex-row {
+    @apply flex-row;
+  }
+  .justify-between {
+    @apply justify-between;
+  }
+  .items-center {
+    @apply items-center;
+  }
+  .bg-gray-100 {
+    @apply bg-gray-100;
+  }
+
+  .form-group {
+    @apply mb-4;
+  }
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-2;
+  }
+  .form-input {
+    @apply border border-gray-300 rounded py-2 px-3 w-full;
+  }
+  .form-textarea {
+    @apply border border-gray-300 rounded py-2 px-3 w-full h-32;
+  }
+  .form-button {
+    @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 cursor-pointer;
+  }
+  .form-error {
+    @apply text-red-600 text-sm mt-1;
+  }
+  .form-success {
+    @apply text-green-600 text-sm mt-1;
+  }
+  .form-select {
+    @apply border border-gray-300 rounded py-2 px-3 w-full;
+  }
+}
