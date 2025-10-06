@@ -1,14 +1,15 @@
-import { createWebHistory, createRouter } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory("/"),
   linkActiveClass: "!border-emerald-500 !text-emerald-500 border-b border-transparent border-b-2 border-emerald-300",
-  linkExactActiveClass: "!border-emerald-500 !text-emerald-500",      
+  linkExactActiveClass: "!border-emerald-500 !text-emerald-500",
   routes: [
     {
       path: "/",
       component: () => import("./views/Landing.vue"),
       name: "Home",
+      meta: { requiredAuth: true, role: "admin" }
     },
     {
       path: "/login",
@@ -66,5 +67,18 @@ const router = createRouter({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  // const userStore = useUserStore()
+  const userStore = JSON.parse(localStorage.getItem("user") ?? "")
+  if (to.meta.requiresAuth && !userStore.isAuthenticated) {
+    return next({ name: 'home' })
+  }
+  if (to.meta.role && userStore.user?.role !== to.meta.role) {
+    return next({ name: 'home' })
+  }
+  next()
+})
+
 
 export default router;
